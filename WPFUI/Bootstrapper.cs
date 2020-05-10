@@ -24,6 +24,7 @@ namespace WPFUI
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
+                //.RegisterPerRequest(typeof(ShellViewModel), null, typeof(ShellViewModel));
 
             // dodawanie instancji przez DI
             //_container
