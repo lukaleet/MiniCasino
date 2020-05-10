@@ -4,25 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFUI.Models;
 
 namespace WPFUI.ViewModels
 {
 	public class ShellViewModel : Conductor<object>
 	{
-		//private BindableCollection<PersonModel> _people = new BindableCollection<PersonModel>();
 		private SlotsViewModel _slotsVM;
-		private 
-
 
 		public ShellViewModel(SlotsViewModel slotsVM)
 		{
 			_slotsVM = slotsVM;
+			ActivateItem(_slotsVM);
 		}
 
 		public void SlotsButton()
 		{
-
+			ActivateItem(_slotsVM);
 		}
 	}
 }
