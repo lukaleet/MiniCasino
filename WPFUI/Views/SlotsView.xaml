@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFUI.Views"
              mc:Ignorable="d" Background="White" FontFamily="Segoe UI Light"
-             d:DesignHeight="425" d:DesignWidth="800">
+             d:DesignHeight="435" d:DesignWidth="820">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -40,13 +42,13 @@
         
         <!-- Button do gry -->
         <Button Grid.Column="2" Grid.Row="3" x:Name="Play" Grid.ColumnSpan="1" HorizontalAlignment="Center" 
-                Margin="0, 30, 0, 30" Padding="5" FontSize="14">
+                Margin="0, 30, 0, 30" Padding="5" FontSize="14" Background="#FFD6ADAD" BorderBrush="#FF9B5C5C">
             Postaw i Graj
         </Button>
         
         <!-- Obrazek bębna -->
-        <Image Grid.Column="5" Grid.Row="1" MaxHeight="150" MaxWidth="400" 
-               Grid.ColumnSpan="5" Margin="20, 20, 20, 20" Source="C:\Users\luke\source\repos\WpfApp1\WpfApp1\slots.png"/>
+        <Image Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center"
+               Grid.ColumnSpan="3" Source="C:\Users\luke\source\repos\WpfApp1\WpfApp1\slots.png"/>
         
         <!-- Komunikat o dopuszczanych kwotach -->
         <TextBlock Grid.Column="1" Grid.Row="4" FontSize="14" x:Name="BetInfo"
@@ -62,8 +64,13 @@
             
         </TextBlock>
 
-        <!--<Image x:Name="Opcja1" Grid.Column="2" Grid.Row="2" MaxHeight="80" Source="{Binding}"/>
-        <Image x:Name="Opcja2" Grid.Column="3" Grid.Row="2" MaxHeight="80" Source="{Binding}"/>
-        <Image x:Name="Opcja3" Grid.Column="4" Grid.Row="2" MaxHeight="80" Source="{Binding}"/>-->
+        <Image x:Name="Slot1" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="1"
+               MaxHeight="80" Source="{Binding Slot1}" />
+
+        <Image x:Name="Slot2" Grid.Column="6" Grid.Row="1" 
+               MaxHeight="80" Source="{Binding Slot2}" />
+
+        <Image x:Name="Slot3" Grid.Column="7" Grid.Row="1" 
+               MaxHeight="80" Source="{Binding Slot3}" />
     </Grid>
 </UserControl>

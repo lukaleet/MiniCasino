@@ -10,18 +10,6 @@ namespace Casino.Slots
         Random random = new Random();
 
         public List<char> RandomlyChosen = new List<char>();
-        public decimal Win { get; set; }
-
-        //public SlotsLogic()
-        //{
-        //    char one = RandomSlot();
-        //    char two = RandomSlot();
-        //    char three = RandomSlot();
-
-        //    RandomlyChosen.Add(one);
-        //    RandomlyChosen.Add(two);
-        //    RandomlyChosen.Add(three);
-        //}
 
         private char RandomSlot()
         {
@@ -64,7 +52,7 @@ namespace Casino.Slots
         }
 
         //TODO TU DODAC JAKIES CUSTOMOWE FUNKCJE TYPU BOOL WYGRANYCH JAKO METODY PRYWATNE, WRZUCIC JE DO POWYZSZEJ METODY
-        // COS W STYLU LEMONIADA JAK NP WYPADNIE LLO, LOL, OLL ITP JAKO SPECJALNA ODMIANA TWOARESAME
+        // COS W STYLU LEMONIADA JAK NP WYPADNIE LEMON LEMON ORANGE W DOWOLNEJ KOLEJNOSCI, LOL, OLL ITP JAKO SPECJALNA ODMIANA TWOARESAME
 
         //private bool TwoAreSame()
         //{
