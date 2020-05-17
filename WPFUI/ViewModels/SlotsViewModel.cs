@@ -17,12 +17,13 @@ namespace WPFUI.ViewModels
 
 		private decimal _betStake;
 		private string _betInfo;
-		// tymczasowe pole
+
 		private decimal _winStake;
 
 		private ImageSource _slot1;
 		private ImageSource _slot2;
 		private ImageSource _slot3;
+
 
 		public decimal BetStake
 		{
@@ -98,6 +99,8 @@ namespace WPFUI.ViewModels
 				return output;
 			}
 		}
+
+		//TU NA PEWNO TO DO BO PIEKNIE TO NIE WYGLADA
 		public void Play()
 		{
 			Console.WriteLine($"Play { BetStake }");
@@ -122,6 +125,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// PODMIANA OBRAZKA SLOT1 ITP
+		//TO DO MOZE OBRABIAC LISTE ZAMIAST POJEDYNCZYCH POL JAK SIE BEDZIE DALO, POKI CO JEST GIT BO DZIALA
 		public ImageSource Images(char which) 
 		{
 			ImageSource art;
