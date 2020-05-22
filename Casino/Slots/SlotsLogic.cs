@@ -37,7 +37,7 @@ namespace Casino.Slots
                 winStake = betStake * 1000M;
             }
 
-            if (TwoAreSame())
+            else if (TwoAreSame())
             {
                 winStake = betStake * 1.5M;
             }
