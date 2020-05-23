@@ -149,5 +149,15 @@
       <Name>Casino</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Roulette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cherry.png" />
+    <Resource Include="Images\lemon.png" />
+    <Resource Include="Images\orange.png" />
+    <Resource Include="Images\plum.png" />
+    <Resource Include="Images\watermelon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
