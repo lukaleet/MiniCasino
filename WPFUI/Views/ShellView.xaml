@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI.Views"
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
-        Title="MiniCasino" Height="485" Width="820" WindowStartupLocation="CenterScreen">
+        Title="MiniCasino" Height="495" Width="820" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Graj" Margin="5" FontSize="16">

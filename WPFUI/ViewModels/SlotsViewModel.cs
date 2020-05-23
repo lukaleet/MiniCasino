@@ -132,6 +132,7 @@ namespace WPFUI.ViewModels
 			ImageSource art;
 			var converter = new ImageSourceConverter();
 			if (which == 'C') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/cherry.png");
+			//if (which == 'C') art = (ImageSource)converter.ConvertFrom("~/Images/cherry.png");
 			else if (which == 'L') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/lemon.png");
 			else if (which == 'O') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/orange.png");
 			else if (which == 'P') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/plum.png");
