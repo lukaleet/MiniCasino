@@ -10,8 +10,9 @@ namespace WPFUI.ViewModels
 	public class RouletteViewModel : Screen
 	{
 		private decimal _betStake;
-		private string _inputBox = "0";
+		private string _inputBox;
 
+		private string _info;
 		private string _betInfo;
 
 		private decimal _winStake;
@@ -45,6 +46,22 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		public string Info
+		{
+			get 
+			{ 
+				return _info; 
+			}
+			set
+			{
+				_info = value;
+
+				NotifyOfPropertyChange(() => Info);
+				NotifyOfPropertyChange(() => CanPlay);
+			}
+		}
+
+
 		public string InputBox
 		{
 			get { return _inputBox; }
@@ -57,19 +74,19 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		//public bool CanOddButton 
-		//{
-		//	get
-		//	{
-		//		bool output = false;
-		//		if (!OddButton) 
-		//		{
-		//			output = true;
-		//		}
+		public int InputBoxToNumber
+		{
+			get 
+			{
+				var input = InputBox;
+				if (String.IsNullOrEmpty(input))
+				{
+					return 0;
+				}
 
-		//		return output;
-		//	}
-		//}
+				return int.Parse(input);
+			}
+		}
 
 		public bool OddButton
 		{
@@ -77,8 +94,11 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_oddButton = value;
-
+				Info = "Wpisz 'parzyste' lub 'nieparzyste.'";
+				InputBox = "";
+				
 				NotifyOfPropertyChange(() => OddButton);
+				NotifyOfPropertyChange(() => Info);
 				NotifyOfPropertyChange(() => CanPlay);
 			}
 		}
@@ -89,8 +109,11 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_numberButton = value;
+				Info = "Wpisz liczbę z przedziału 0-36.";
+				InputBox = "";
 
 				NotifyOfPropertyChange(() => NumberButton);
+				NotifyOfPropertyChange(() => Info);
 				NotifyOfPropertyChange(() => CanPlay);
 			}
 		}
@@ -101,8 +124,11 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_colorButton = value;
+				Info = "Wpisz 'czarne' lub 'czerwone'.";
+				InputBox = "";
 
 				NotifyOfPropertyChange(() => ColorButton);
+				NotifyOfPropertyChange(() => Info);
 				NotifyOfPropertyChange(() => CanPlay);
 			}
 		}
@@ -125,12 +151,11 @@ namespace WPFUI.ViewModels
 						output = true;
 					}
 
-					else if (NumberButton && (int.Parse(InputBox) >= 0  && int.Parse(InputBox) <= 36))
+					else if (NumberButton && (InputBoxToNumber >= 0  && InputBoxToNumber <= 36))
 					{
 						output = true;
 					}
 
-					//output = true;
 					BetInfo = "";
 				}
 				else if (BetStake <= 0)
