@@ -14,7 +14,7 @@ namespace Casino.Slots
         private char RandomSlot()
         {
             string chars = "CLOPW";
-            int num = random.Next(0, chars.Length - 1);
+            int num = random.Next(0, chars.Length);
             return chars[num];
         }
 
