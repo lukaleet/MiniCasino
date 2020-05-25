@@ -49,12 +49,18 @@ namespace WPFUI.ViewModels
 		public string Info
 		{
 			get 
-			{ 
+			{
+				if (OddButton)
+					_info = "Wpisz 'parzyste' lub 'nieparzyste.'";
+				else if (NumberButton)
+					_info = "Wpisz liczbę z przedziału 0-36.";
+				else if (ColorButton)
+					_info = "Wpisz 'czarne' lub 'czerwone'.";
+
 				return _info; 
 			}
 			set
 			{
-				_info = value;
 
 				NotifyOfPropertyChange(() => Info);
 				NotifyOfPropertyChange(() => CanPlay);
@@ -79,12 +85,18 @@ namespace WPFUI.ViewModels
 			get 
 			{
 				var input = InputBox;
+				int result;
 				if (String.IsNullOrEmpty(input))
 				{
 					return 0;
 				}
 
-				return int.Parse(input);
+				else if (int.TryParse(input, out result)) 
+				{
+					return result;
+				}
+
+				return 0;
 			}
 		}
 
@@ -94,7 +106,6 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_oddButton = value;
-				Info = "Wpisz 'parzyste' lub 'nieparzyste.'";
 				InputBox = "";
 				
 				NotifyOfPropertyChange(() => OddButton);
@@ -109,7 +120,6 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_numberButton = value;
-				Info = "Wpisz liczbę z przedziału 0-36.";
 				InputBox = "";
 
 				NotifyOfPropertyChange(() => NumberButton);
@@ -124,7 +134,6 @@ namespace WPFUI.ViewModels
 			set
 			{
 				_colorButton = value;
-				Info = "Wpisz 'czarne' lub 'czerwone'.";
 				InputBox = "";
 
 				NotifyOfPropertyChange(() => ColorButton);
