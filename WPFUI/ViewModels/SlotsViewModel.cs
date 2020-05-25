@@ -12,19 +12,31 @@ namespace WPFUI.ViewModels
 {
     public class SlotsViewModel : Screen
 	{
+		/*
+		 Logika jest tu taka, ze tworzymy pelne wlasciwosci (full properties), ktore skladaja sie z prywatnego pola i wlasciwosci
+		 do odczytu i zapisu tego pola. Robimy tak dlatego, bo wymaga tego Caliburn Micro i mechanizm MVVM. Te full propertisy maja taka sama nazwe
+		 jak to co nazwalismy w SlotsView.
+		 */
+
 		// TODO WRZUCIC DI NAWET W ZWYKLE KLASY SPOZA PROJEKTU
 		SlotsLogic slotsLogic = new SlotsLogic();
 
+
+		// Wysokosc zakladu, polaczona z TextBoxem, w ktorego wpisuje sie wartosc
 		private decimal _betStake;
+
+		// Informacja na temat stawek wyswietlana pod blokiem na wpisywanie danych
 		private string _betInfo;
 
+		// obliczenie wygranej na podstawie zakladu, to pole nie jest polaczone bezposrednio ze SlotsView
 		private decimal _winStake;
 
+		// Wyswietlaja obrazki, polaczone z Image w Slots View
 		private ImageSource _slot1;
 		private ImageSource _slot2;
 		private ImageSource _slot3;
 
-
+		// Wlasciwosc (property), ktora sluzy do manipulowania _betStake, jednozcesnie jest polaczona z widokiem na zasadzie konwencji nazw.
 		public decimal BetStake
 		{
 			get { return _betStake; }
@@ -80,6 +92,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+
+		// Wlasciwosc CanPlay, ktora sluzy do sprawdzania, czy przycisk do grania (button z widoku o nazwie "Play") moze byc nacisniety
 		public bool CanPlay
 		{
 			get
@@ -101,6 +115,7 @@ namespace WPFUI.ViewModels
 		}
 
 		//TU NA PEWNO TO DO BO PIEKNIE TO NIE WYGLADA
+		// funkcja odpalenia przycisku, tylko mozliwa gdy CanPlay == true
 		public void Play()
 		{
 			Console.WriteLine($"Play { BetStake }");
@@ -125,7 +140,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		// PODMIANA OBRAZKA SLOT1 ITP
+		// PODMIANA OBRAZKA SLOT1, SLOT2 ITP
 		//TO DO MOZE OBRABIAC LISTE ZAMIAST POJEDYNCZYCH POL JAK SIE BEDZIE DALO, POKI CO JEST GIT BO DZIALA
 		public ImageSource Images(char which) 
 		{
