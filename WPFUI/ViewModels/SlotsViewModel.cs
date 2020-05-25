@@ -146,10 +146,8 @@ namespace WPFUI.ViewModels
 		//TO DO MOZE OBRABIAC LISTE ZAMIAST POJEDYNCZYCH POL JAK SIE BEDZIE DALO, POKI CO JEST GIT BO DZIALA
 		public Image Images(char which) 
 		{
-			//ImageSource art;
 			Image image = new Image();
 
-			var converter = new ImageSourceConverter();
 			if (which == 'C') image.Source = new BitmapImage(new Uri(@"/Images/cherry.png", UriKind.Relative));
 			else if (which == 'L') image.Source = new BitmapImage(new Uri(@"/Images/lemon.png", UriKind.Relative));
 			else if (which == 'O') image.Source = new BitmapImage(new Uri(@"/Images/orange.png", UriKind.Relative));
