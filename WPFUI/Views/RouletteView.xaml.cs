@@ -24,5 +24,11 @@ namespace WPFUI.Views
         {
             InitializeComponent();
         }
+
+        private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
     }
 }

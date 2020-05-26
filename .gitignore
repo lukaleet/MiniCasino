@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/WPFUI/ViewModels/BlackjackViewModel.cs
+/WPFUI/ViewModels/HelpViewModel.cs
+/WPFUI/Views/BlackjackView.xaml
+/WPFUI/Views/BlackjackView.xaml.cs
+/WPFUI/Views/HelpView.xaml
+/WPFUI/Views/HelpView.xaml.cs

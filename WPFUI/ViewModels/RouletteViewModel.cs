@@ -1,14 +1,22 @@
 ﻿using Caliburn.Micro;
+using Casino.Roulette;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
+
 
 namespace WPFUI.ViewModels
 {
 	public class RouletteViewModel : Screen
 	{
+
+		RouletteLogic rouletteLogic = new RouletteLogic();
+
 		private decimal _betStake;
 		private string _inputBox;
 
@@ -20,6 +28,11 @@ namespace WPFUI.ViewModels
 		private bool _oddButton;
 		private bool _numberButton;
 		private bool _colorButton;
+
+		private bool _halfButton;
+		private bool _thirdButton;
+		private bool _columnButton;
+
 
 		public decimal BetStake
 		{
@@ -48,7 +61,9 @@ namespace WPFUI.ViewModels
 
 		public string Info
 		{
-			get 
+
+			get
+
 			{
 				if (OddButton)
 					_info = "Wpisz 'parzyste' lub 'nieparzyste.'";
@@ -56,6 +71,13 @@ namespace WPFUI.ViewModels
 					_info = "Wpisz liczbę z przedziału 0-36.";
 				else if (ColorButton)
 					_info = "Wpisz 'czarne' lub 'czerwone'.";
+
+				else if (HalfButton)
+					_info = "Wpisz '1' lub '2'.";
+				else if (ThirdButton)
+					_info = "Wpisz '1', '2' lub '3'.";
+				else if (ColumnButton)
+					_info = "Wpisz '1', '2' lub '3'.";
 
 				return _info; 
 			}
@@ -67,6 +89,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+
+		//todo combobox albo radiobuttony
 
 		public string InputBox
 		{
@@ -91,7 +115,8 @@ namespace WPFUI.ViewModels
 					return 0;
 				}
 
-				else if (int.TryParse(input, out result)) 
+
+				else if (int.TryParse(input, out result))
 				{
 					return result;
 				}
@@ -107,7 +132,7 @@ namespace WPFUI.ViewModels
 			{
 				_oddButton = value;
 				InputBox = "";
-				
+
 				NotifyOfPropertyChange(() => OddButton);
 				NotifyOfPropertyChange(() => Info);
 				NotifyOfPropertyChange(() => CanPlay);
@@ -142,13 +167,53 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		public bool HalfButton
+		{
+			get { return _halfButton; }
+			set
+			{
+				_halfButton = value;
+
+				NotifyOfPropertyChange(() => HalfButton);
+				NotifyOfPropertyChange(() => Info);
+				NotifyOfPropertyChange(() => CanPlay);
+			}
+		}
+
+		public bool ThirdButton
+		{
+			get { return _thirdButton; }
+			set
+			{
+				_thirdButton = value;
+
+				NotifyOfPropertyChange(() => ThirdButton);
+				NotifyOfPropertyChange(() => Info);
+				NotifyOfPropertyChange(() => CanPlay);
+			}
+		}
+
+		public bool ColumnButton
+		{
+			get { return _columnButton; }
+			set
+			{
+				_columnButton = value;
+
+				NotifyOfPropertyChange(() => ColumnButton);
+				NotifyOfPropertyChange(() => Info);
+				NotifyOfPropertyChange(() => CanPlay);
+			}
+		}
+
 		public bool CanPlay
 		{
 			get
 			{
 				bool output = false;
 
-				if (BetStake > 0 && !(BetStake >= 300))
+
+				if (BetStake > 0 && !(BetStake > 300))
 				{
 					if (OddButton && (InputBox == "parzyste" || InputBox == "nieparzyste"))
 					{
@@ -160,7 +225,24 @@ namespace WPFUI.ViewModels
 						output = true;
 					}
 
+					else if (NumberButton && (InputBoxToNumber >= 0 && InputBoxToNumber <= 36))
+					{
+						output = true;
+					}
+
+					else if (HalfButton && (InputBox == "1" || InputBox == "2"))
+					{
+						output = true;
+					}
+
+					else if (ThirdButton && (InputBox == "1" || InputBox == "2" || InputBox == "3"))
+					{
+						output = true;
+					}
+
+					else if (ColumnButton && (InputBox == "1" || InputBox == "2" || InputBox == "3"))
 					else if (NumberButton && (InputBoxToNumber >= 0  && InputBoxToNumber <= 36))
+
 					{
 						output = true;
 					}
@@ -176,8 +258,21 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		public void Play() 
-		{ 
-		}
+
+		public void Play()
+		{
+			Console.WriteLine($"Play { BetStake }");
+
+			rouletteLogic.RandomNumber();			
+			if(NumberButton) _winStake = rouletteLogic.ComputeNumber(BetStake, InputBoxToNumber);
+			if(OddButton) _winStake = rouletteLogic.ComputeOdd(BetStake, InputBox);	
+			if(ColorButton) _winStake = rouletteLogic.ComputeColor(BetStake, InputBox);
+			if(HalfButton) _winStake = rouletteLogic.ComputeHalf(BetStake, InputBox);
+			if(ThirdButton) _winStake = rouletteLogic.ComputeThird(BetStake, InputBox);
+			if(ColumnButton) _winStake = rouletteLogic.ComputeColumn(BetStake, InputBox);
+			
+			Console.WriteLine($"{ _winStake }");
+			MessageBox.Show($"Wypadło {rouletteLogic.RandomlyChosen}\nWygrałeś { _winStake }");
+			
 	}
 }
