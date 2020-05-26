@@ -43,8 +43,11 @@
         <TextBox x:Name="BetStake" Grid.Row="2" Grid.Column="1" Margin="5 10"
                  MinWidth="150" MaxWidth="150">
         </TextBox>
-        
 
+        <TextBlock x:Name="Info" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
+                   FontSize="14">
+        </TextBlock>
+        
         <!-- Input na bety Row2 Col3 -->
         <TextBox x:Name="InputBox" Grid.Row="2" Grid.Column="3" Margin="5 10"
                  MinWidth="150" MaxWidth="150" TextChanged="InputBox_TextChanged">

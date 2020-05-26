@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,7 +58,7 @@ namespace Casino.Roulette
             else if (playerBet == "2" && (RandomlyChosen % 3) == 2) return betStake * 3;
             else if (playerBet == "3" && (RandomlyChosen % 3) == 0) return betStake * 3;
             else return 0;
-        }     
+        }
 
     }
 }
