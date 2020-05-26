@@ -6,24 +6,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace WPFUI.ViewModels
 {
     public class SlotsViewModel : Screen
 	{
+		/*
+		 Logika jest tu taka, ze tworzymy pelne wlasciwosci (full properties), ktore skladaja sie z prywatnego pola i wlasciwosci
+		 do odczytu i zapisu tego pola. Robimy tak dlatego, bo wymaga tego Caliburn Micro i mechanizm MVVM. Te full propertisy maja taka sama nazwe
+		 jak to co nazwalismy w SlotsView.
+		 */
+
 		// TODO WRZUCIC DI NAWET W ZWYKLE KLASY SPOZA PROJEKTU
 		SlotsLogic slotsLogic = new SlotsLogic();
 
+
+		// Wysokosc zakladu, polaczona z TextBoxem, w ktorego wpisuje sie wartosc
 		private decimal _betStake;
+
+		// Informacja na temat stawek wyswietlana pod blokiem na wpisywanie danych
 		private string _betInfo;
-		// tymczasowe pole
+
+		// obliczenie wygranej na podstawie zakladu, to pole nie jest polaczone bezposrednio ze SlotsView
 		private decimal _winStake;
 
-		private ImageSource _slot1;
-		private ImageSource _slot2;
-		private ImageSource _slot3;
+		// Wyswietlaja obrazki, polaczone z Image w Slots View
+		private Image _slot1;
+		private Image _slot2;
+		private Image _slot3;
 
+		// Wlasciwosc (property), ktora sluzy do manipulowania _betStake, jednozcesnie jest polaczona z widokiem na zasadzie konwencji nazw.
 		public decimal BetStake
 		{
 			get { return _betStake; }
@@ -49,17 +64,17 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		public ImageSource Slot1 
-		{ 
+		public Image Slot1
+		{
 			get { return _slot1; }
-			set 
+			set
 			{
 				_slot1 = value;
 				NotifyOfPropertyChange(() => Slot1);
 			}
 		}
 
-		public ImageSource Slot2
+		public Image Slot2
 		{
 			get { return _slot2; }
 			set
@@ -69,7 +84,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		public ImageSource Slot3
+		public Image Slot3
 		{
 			get { return _slot3; }
 			set
@@ -79,6 +94,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+
+		// Wlasciwosc CanPlay, ktora sluzy do sprawdzania, czy przycisk do grania (button z widoku o nazwie "Play") moze byc nacisniety
 		public bool CanPlay
 		{
 			get
@@ -98,6 +115,9 @@ namespace WPFUI.ViewModels
 				return output;
 			}
 		}
+
+		//TU NA PEWNO TO DO BO PIEKNIE TO NIE WYGLADA
+		// funkcja odpalenia przycisku, tylko mozliwa gdy CanPlay == true
 		public void Play()
 		{
 			Console.WriteLine($"Play { BetStake }");
@@ -122,17 +142,19 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		public ImageSource Images(char which) 
+		// PODMIANA OBRAZKA SLOT1, SLOT2 ITP
+		//TO DO MOZE OBRABIAC LISTE ZAMIAST POJEDYNCZYCH POL JAK SIE BEDZIE DALO, POKI CO JEST GIT BO DZIALA
+		public Image Images(char which) 
 		{
-			ImageSource art;
-			var converter = new ImageSourceConverter();
-			if (which == 'C') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/cherry.png");
-			else if (which == 'L') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/lemon.png");
-			else if (which == 'O') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/orange.png");
-			else if (which == 'P') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/plum.png");
-			else if (which == 'W') art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/images/watermelon.png");
-			else art = (ImageSource)converter.ConvertFromString("C:/Users/luke/source/repos/WpfApp1/WpfApp1/slots.png");
-			return art;
+			Image image = new Image();
+
+			if (which == 'C') image.Source = new BitmapImage(new Uri(@"/Images/cherry.png", UriKind.Relative));
+			else if (which == 'L') image.Source = new BitmapImage(new Uri(@"/Images/lemon.png", UriKind.Relative));
+			else if (which == 'O') image.Source = new BitmapImage(new Uri(@"/Images/orange.png", UriKind.Relative));
+			else if (which == 'P') image.Source = new BitmapImage(new Uri(@"/Images/plum.png", UriKind.Relative));
+			else if (which == 'W') image.Source = new BitmapImage(new Uri(@"/Images/watermelon.png", UriKind.Relative));
+			else image.Source = new BitmapImage(new Uri(@"/Images/slots.png", UriKind.Relative));
+			return image;
 		}
 	}
 }

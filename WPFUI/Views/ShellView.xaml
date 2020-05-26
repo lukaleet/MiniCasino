@@ -5,54 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI.Views"
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
-        Title="MiniCasino" Height="485" Width="820" WindowStartupLocation="CenterScreen">
-    <!--<Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
-        </Grid.RowDefinitions>
-
-        --><!-- Powitanie --><!--
-        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Margin="0 0 0 170"
-                   HorizontalAlignment="Center" FontSize="58" FontFamily="Segoe UI Light">
-            Witaj w kasynie!
-        </TextBlock>
-
-        --><!-- Slots Button --><!--
-        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Padding="0"
-                HorizontalAlignment="Center" x:Name="SlotsButton">
-            Zagraj na automatach!
-        </Button>
-
-        --><!-- Roulette Button --><!--
-        <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Padding="25 10" x:Name="RouletteButton" 
-                 Margin="0,0,0,0" HorizontalAlignment="Center">
-            Spróbuj ruletkę!
-        </Button>
-
-        --><!-- Blackjack Button --><!--
-        <Button Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1" Padding="49 10"
-                HorizontalAlignment="Center" x:Name="BlackjackButton">
-            Blackjack!
-        </Button>
-        
-        --><!-- Content Control --><!--
-        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"
-                       x:Name="ActiveItem" />
-
-    </Grid>-->
-
+        Title="MiniCasino" Height="495" Width="820" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Graj" Margin="5" FontSize="16">
@@ -60,6 +13,7 @@
                 <MenuItem x:Name="RouletteScreen" Header="_Ruletka"></MenuItem>
                 <MenuItem x:Name="BlackjackScreen" Header="_Blackjack"></MenuItem>
             </MenuItem>
+            
             <MenuItem Header="_Pomoc" Margin="5" FontSize="16">
                 <MenuItem x:Name="HelpScreen" Header="_Zasady Gry"></MenuItem>
             </MenuItem>

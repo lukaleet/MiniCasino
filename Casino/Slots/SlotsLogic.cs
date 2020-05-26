@@ -14,7 +14,7 @@ namespace Casino.Slots
         private char RandomSlot()
         {
             string chars = "CLOPW";
-            int num = random.Next(0, chars.Length - 1);
+            int num = random.Next(0, chars.Length);
             return chars[num];
         }
 
@@ -26,11 +26,6 @@ namespace Casino.Slots
             RandomlyChosen.Add(RandomSlot());
         }
 
-
-        /* 
-         Obliczenie wysokości wygranej, jeśli wszystkie symbole są takie same, to mnożymy bet * 1000
-         PAMIĘTAĆ, ŻE BETSTAKE Z SLOTSVIEWMODEL NIE MOŻE BYĆ < 0
-         */
         public decimal ComputeWin(decimal betStake)
         {
             decimal winStake = 0;
@@ -39,24 +34,38 @@ namespace Casino.Slots
 
             if (allAreSame)
             {
-                winStake = betStake * 1000;
+                winStake = betStake * 1000M;
             }
 
-            //if (TwoAreSame())
-            //{
-            //    winStake = betStake * 150;
-            //}
+            else if (TwoAreSame())
+            {
+                winStake = betStake * 1.5M;
+            }
 
 
             return winStake;
         }
 
-        //TODO TU DODAC JAKIES CUSTOMOWE FUNKCJE TYPU BOOL WYGRANYCH JAKO METODY PRYWATNE, WRZUCIC JE DO POWYZSZEJ METODY
-        // COS W STYLU LEMONIADA JAK NP WYPADNIE LEMON LEMON ORANGE W DOWOLNEJ KOLEJNOSCI, LOL, OLL ITP JAKO SPECJALNA ODMIANA TWOARESAME
+        private bool TwoAreSame()
+        {
+            //jesli pierwszy = sie drugiemu i nie trzeciuemu, lub jestli pierwszy rowna sie trzeciemu i nie drugiemu, lub jestli drugi rowna sie trzeciemu
 
-        //private bool TwoAreSame()
-        //{
-        //}
+            if (RandomlyChosen.ElementAt(0) == RandomlyChosen.ElementAt(1) && RandomlyChosen.ElementAt(0) != RandomlyChosen.ElementAt(2))
+            {
+                return true;
+            }
 
+            else if (RandomlyChosen.ElementAt(0) == RandomlyChosen.ElementAt(2) && RandomlyChosen.ElementAt(0) != RandomlyChosen.ElementAt(1))
+            {
+                return true;
+            }
+
+            else if (RandomlyChosen.ElementAt(1) == RandomlyChosen.ElementAt(2)) 
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

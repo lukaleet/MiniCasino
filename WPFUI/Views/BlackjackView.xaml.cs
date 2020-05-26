@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace WPFUI.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy RouletteView.xaml
+    /// Logika interakcji dla klasy BlackjackView.xaml
     /// </summary>
-    public partial class RouletteView : UserControl
+    public partial class BlackjackView : UserControl
     {
-        public RouletteView()
+        public BlackjackView()
         {
             InitializeComponent();
         }
-
-        private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
     }
 }

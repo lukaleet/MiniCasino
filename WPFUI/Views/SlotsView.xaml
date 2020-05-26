@@ -65,12 +65,12 @@
         </TextBlock>
 
         <Image x:Name="Slot1" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="1"
-               MaxHeight="80" Source="{Binding Slot1}" />
+               MaxHeight="80" Source="{Binding Slot1.Source}" />
 
         <Image x:Name="Slot2" Grid.Column="6" Grid.Row="1" 
-               MaxHeight="80" Source="{Binding Slot2}" />
+               MaxHeight="80" Source="{Binding Slot2.Source}" />
 
         <Image x:Name="Slot3" Grid.Column="7" Grid.Row="1" 
-               MaxHeight="80" Source="{Binding Slot3}" />
+               MaxHeight="80" Source="{Binding Slot3.Source}" />
     </Grid>
 </UserControl>

@@ -34,7 +34,9 @@
 
         <!-- Obrazek Row1 Col1 -->
         <Image x:Name="RouletteImage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6"
+               
              MaxHeight="210" MaxWidth="650"  Source="/Images/Roulette.png">            
+
         </Image>
 
         <!-- Input na bety Row2 Col1 -->
@@ -42,6 +44,7 @@
                  MinWidth="150" MaxWidth="150">
         </TextBox>
         
+
         <!-- Input na bety Row2 Col3 -->
         <TextBox x:Name="InputBox" Grid.Row="2" Grid.Column="3" Margin="5 10"
                  MinWidth="150" MaxWidth="150" TextChanged="InputBox_TextChanged">
@@ -53,18 +56,13 @@
             Postaw i graj!
         </Button>
 
+
         <!-- Bet info Row3 Col1 -->
         <TextBlock x:Name="BetInfo" Grid.Row="3" Grid.Column="1" FontSize="14"
                    Foreground="Red"
                    Margin="35 0 0 0">
             dddaaaa
         </TextBlock>
-
-        <!-- Info Block Row3 Col3  -->
-        <TextBlock x:Name="Info" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
-                   FontSize="14">                  
-        </TextBlock>
-
 
         <!-- Wrap Panel z buttonami Row4 Col1 -->
         <WrapPanel Grid.Row="4" Grid.Column="1" Margin="5" Grid.RowSpan="4" Grid.ColumnSpan="3" Orientation="Vertical">

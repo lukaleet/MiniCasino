@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using Casino.Roulette;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+
 
 namespace WPFUI.ViewModels
 {
@@ -26,16 +28,18 @@ namespace WPFUI.ViewModels
 		private bool _oddButton;
 		private bool _numberButton;
 		private bool _colorButton;
+
 		private bool _halfButton;
 		private bool _thirdButton;
 		private bool _columnButton;
+
 
 		public decimal BetStake
 		{
 			get { return _betStake; }
 			set
 			{
-				if (value > 300 || value <= 0)
+				if (value >= 300 || value <= 0)
 					_betStake = 0;
 				else
 					_betStake = value;
@@ -57,7 +61,9 @@ namespace WPFUI.ViewModels
 
 		public string Info
 		{
+
 			get
+
 			{
 				if (OddButton)
 					_info = "Wpisz 'parzyste' lub 'nieparzyste.'";
@@ -65,6 +71,7 @@ namespace WPFUI.ViewModels
 					_info = "Wpisz liczbę z przedziału 0-36.";
 				else if (ColorButton)
 					_info = "Wpisz 'czarne' lub 'czerwone'.";
+
 				else if (HalfButton)
 					_info = "Wpisz '1' lub '2'.";
 				else if (ThirdButton)
@@ -72,7 +79,7 @@ namespace WPFUI.ViewModels
 				else if (ColumnButton)
 					_info = "Wpisz '1', '2' lub '3'.";
 
-				return _info;
+				return _info; 
 			}
 			set
 			{
@@ -82,7 +89,9 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+
 		//todo combobox albo radiobuttony
+
 		public string InputBox
 		{
 			get { return _inputBox; }
@@ -97,7 +106,7 @@ namespace WPFUI.ViewModels
 
 		public int InputBoxToNumber
 		{
-			get
+			get 
 			{
 				var input = InputBox;
 				int result;
@@ -105,6 +114,7 @@ namespace WPFUI.ViewModels
 				{
 					return 0;
 				}
+
 
 				else if (int.TryParse(input, out result))
 				{
@@ -156,6 +166,7 @@ namespace WPFUI.ViewModels
 				NotifyOfPropertyChange(() => CanPlay);
 			}
 		}
+
 		public bool HalfButton
 		{
 			get { return _halfButton; }
@@ -201,6 +212,7 @@ namespace WPFUI.ViewModels
 			{
 				bool output = false;
 
+
 				if (BetStake > 0 && !(BetStake > 300))
 				{
 					if (OddButton && (InputBox == "parzyste" || InputBox == "nieparzyste"))
@@ -229,13 +241,14 @@ namespace WPFUI.ViewModels
 					}
 
 					else if (ColumnButton && (InputBox == "1" || InputBox == "2" || InputBox == "3"))
+					else if (NumberButton && (InputBoxToNumber >= 0  && InputBoxToNumber <= 36))
+
 					{
 						output = true;
 					}
 
 					BetInfo = "";
 				}
-
 				else if (BetStake <= 0)
 				{
 					BetInfo = "Możesz stawiać kwoty w przedziale 0-300";
@@ -244,6 +257,7 @@ namespace WPFUI.ViewModels
 				return output;
 			}
 		}
+
 
 		public void Play()
 		{
@@ -260,6 +274,5 @@ namespace WPFUI.ViewModels
 			Console.WriteLine($"{ _winStake }");
 			MessageBox.Show($"Wypadło {rouletteLogic.RandomlyChosen}\nWygrałeś { _winStake }");
 			
-		}
 	}
 }
