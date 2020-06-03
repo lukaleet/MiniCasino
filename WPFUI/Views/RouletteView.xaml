@@ -43,7 +43,8 @@
         <TextBox x:Name="BetStake" Grid.Row="2" Grid.Column="1" Margin="5 10"
                  MinWidth="150" MaxWidth="150">
         </TextBox>
-
+        
+        <!-- Info pod inputem Row3 Col1  -->
         <TextBlock x:Name="Info" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
                    FontSize="14">
         </TextBlock>
