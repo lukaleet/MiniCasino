@@ -13,6 +13,11 @@ namespace Casino.Blackjack
 
         public List<Card> enemyHand { get; set; } = new List<Card>();
 
+        public BlackjackLogic()
+        {
+            Deal();
+        }
+
         public void Deal()
         {
             playerHand.Add(deck.cards.ElementAt(0));
@@ -32,11 +37,24 @@ namespace Casino.Blackjack
             deck.cards.RemoveAt(0);
         }
 
-        public void Hit()
+        public bool Hit()
         {
-            playerHand.Add(deck.cards.ElementAt(0));
+            if (HandValue(playerHand) < 21)
+            {
+                playerHand.Add(deck.cards.ElementAt(0));
 
-            deck.cards.RemoveAt(0);
+                deck.cards.RemoveAt(0);
+
+                return true;
+            }
+
+            else
+            {
+                ShouldEnemyDrawCard(enemyHand);
+                ComputePlayerWin(playerHand, enemyHand);
+
+                return false;
+            }         
         }
 
         public bool Stay()
