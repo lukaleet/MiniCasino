@@ -18,6 +18,7 @@ namespace Casino.Blackjack
             Deal();
         }
 
+        //rozdanie kart, moze dziala xd
         public void Deal()
         {
             playerHand.Add(deck.cards.ElementAt(0));
@@ -37,6 +38,7 @@ namespace Casino.Blackjack
             deck.cards.RemoveAt(0);
         }
 
+        //Hit dobierz karte, troche to opakowalem z dupy, ale nie mam chwilowo innego pomyslu
         public bool Hit()
         {
             if (HandValue(playerHand) < 21)
@@ -57,6 +59,7 @@ namespace Casino.Blackjack
             }         
         }
 
+        // Stay przestan dobierac
         public bool Stay()
         {
             if (ShouldEnemyDrawCard(enemyHand))
@@ -70,7 +73,8 @@ namespace Casino.Blackjack
             return win;
         }
 
-        public int HandValue(List<Card> cards)
+        // obliczanie wartosci reki
+        private int HandValue(List<Card> cards)
         {
             int sum = 0;
             foreach(var card in cards)
@@ -81,7 +85,8 @@ namespace Casino.Blackjack
             return sum;
         }
 
-        public bool ShouldEnemyDrawCard(List<Card> enemyCards)
+        // enemy dobiera karte gry jego hand value < 17
+        private bool ShouldEnemyDrawCard(List<Card> enemyCards)
         {
             if (HandValue(enemyCards) >= 17)
                 return false;
@@ -89,7 +94,8 @@ namespace Casino.Blackjack
                 return true;
         }
 
-        bool ComputePlayerWin(List<Card> playerCards, List<Card> enemyCards)
+        // obliczenie wygranej
+        public bool ComputePlayerWin(List<Card> playerCards, List<Card> enemyCards)
         {
             if ((HandValue(playerCards) > HandValue(enemyCards)) && (HandValue(playerCards) < 22))
                 return true;
