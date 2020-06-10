@@ -1,4 +1,4 @@
-﻿using Caliburn.Micro;
+using Caliburn.Micro;
 using Casino.Slots;
 using System;
 using System.Collections.Generic;

@@ -51,6 +51,7 @@ namespace Casino.Slots
         // Jeśli pierwszy = sie drugiemu i nie trzeciuemu, lub jestli pierwszy rowna sie trzeciemu i nie drugiemu, lub jestli drugi rowna sie trzeciemu
         private bool TwoAreSame()
         {
+
             if (RandomlyChosen.ElementAt(0) == RandomlyChosen.ElementAt(1) && RandomlyChosen.ElementAt(0) != RandomlyChosen.ElementAt(2))
             {
                 return true;
