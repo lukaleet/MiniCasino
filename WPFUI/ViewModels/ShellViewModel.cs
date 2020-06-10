@@ -9,11 +9,14 @@ namespace WPFUI.ViewModels
 {
 	public class ShellViewModel : Conductor<object>
 	{
+		// Tu wszystko się zaczyna
 		private SlotsViewModel _slotsVM;
 		private RouletteViewModel _rouletteVM;
 		private BlackjackViewModel _blackjackVM;
 		private HelpViewModel _helpVM;
 
+		// Prywatne pola poszczególnych modeli widoków są przekazywane w konstruktorze
+		// Widokiem domyślnym jest widok z pomocą
 		public ShellViewModel(SlotsViewModel slotsVM, RouletteViewModel rouletteVM, BlackjackViewModel blackjackVM, HelpViewModel helpVM)
 		{
 			_slotsVM = slotsVM;
@@ -23,6 +26,7 @@ namespace WPFUI.ViewModels
 			ActivateItem(_helpVM);
 		}
 
+		// Tu wszystko niżej to mechanizmy przełączania na poszczególne widoki (przekazane wcześniej w konstruktorze)
 		public void SlotsScreen()
 		{
 			ActivateItem(_slotsVM);

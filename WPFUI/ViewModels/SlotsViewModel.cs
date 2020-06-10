@@ -38,7 +38,7 @@ namespace WPFUI.ViewModels
 		private Image _slot2;
 		private Image _slot3;
 
-		// Wlasciwosc (property), ktora sluzy do manipulowania _betStake, jednozcesnie jest polaczona z widokiem na zasadzie konwencji nazw.
+		// Wlasciwosc (property), ktora sluzy do manipulowania _betStake, jednoczesnie jest polaczona z widokiem na zasadzie konwencji nazw.
 		public decimal BetStake
 		{
 			get { return _betStake; }
@@ -64,6 +64,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// Wlasciwosc (property), ktora sluzy do manipulowania _slot1, jednoczesnie jest polaczona z widokiem na zasadzie konwencji nazw
+		// i tam wyświetla obrazek
 		public Image Slot1
 		{
 			get { return _slot1; }
@@ -116,12 +118,11 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		//TU NA PEWNO TO DO BO PIEKNIE TO NIE WYGLADA
-		// funkcja odpalenia przycisku, tylko mozliwa gdy CanPlay == true
+		// Funkcja odpalenia przycisku, tylko mozliwa gdy CanPlay == true
 		public void Play()
 		{
 			Console.WriteLine($"Play { BetStake }");
-			// tu dodac pobieranie kasy od usera, nawet zhardcodowanego i odpalic logike slotsow
+
 			slotsLogic.RandomChoose();
 			_winStake = slotsLogic.ComputeWin(BetStake);
 
@@ -142,8 +143,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		// PODMIANA OBRAZKA SLOT1, SLOT2 ITP
-		//TO DO MOZE OBRABIAC LISTE ZAMIAST POJEDYNCZYCH POL JAK SIE BEDZIE DALO, POKI CO JEST GIT BO DZIALA
+		// Podmiana litery na konkretny obraz wyświetlany w widoku
 		public Image Images(char which) 
 		{
 			Image image = new Image();

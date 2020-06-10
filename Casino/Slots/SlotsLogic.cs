@@ -11,6 +11,7 @@ namespace Casino.Slots
 
         public List<char> RandomlyChosen = new List<char>();
 
+        // Wybór losowego symbolu
         private char RandomSlot()
         {
             string chars = "CLOPW";
@@ -18,6 +19,7 @@ namespace Casino.Slots
             return chars[num];
         }
 
+        // Wybiera losowo 3 symbole i dodaje je do listy
         public void RandomChoose()
         {
             RandomlyChosen.Clear();
@@ -26,6 +28,7 @@ namespace Casino.Slots
             RandomlyChosen.Add(RandomSlot());
         }
 
+        // Obliczenie wygranej, tylko wtedy gdy 2 lub 3 elementy są takie same
         public decimal ComputeWin(decimal betStake)
         {
             decimal winStake = 0;
@@ -42,14 +45,12 @@ namespace Casino.Slots
                 winStake = betStake * 1.5M;
             }
 
-
             return winStake;
         }
 
+        // Jeśli pierwszy = sie drugiemu i nie trzeciuemu, lub jestli pierwszy rowna sie trzeciemu i nie drugiemu, lub jestli drugi rowna sie trzeciemu
         private bool TwoAreSame()
         {
-            //jesli pierwszy = sie drugiemu i nie trzeciuemu, lub jestli pierwszy rowna sie trzeciemu i nie drugiemu, lub jestli drugi rowna sie trzeciemu
-
             if (RandomlyChosen.ElementAt(0) == RandomlyChosen.ElementAt(1) && RandomlyChosen.ElementAt(0) != RandomlyChosen.ElementAt(2))
             {
                 return true;

@@ -34,6 +34,8 @@ namespace WPFUI.ViewModels
 		private bool _columnButton;
 
 
+		// Wlasciwosc polaczona na zasadzie konwencji nazw z widokiem, aktualizuje dynamicznie stawki + jest tu czesciowa walidacja
+		// Jest to TextBlock na wpisywanie stawek
 		public decimal BetStake
 		{
 			get { return _betStake; }
@@ -49,6 +51,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// Wlasciwosc polaczona na zasadzie konwencji nazw z widokiem, aktualizuje dynamicznie stawki + jest tu czesciowa walidacja
+		// Wyswietla aktualna stawke
 		public string BetInfo
 		{
 			get { return _betInfo; }
@@ -58,6 +62,8 @@ namespace WPFUI.ViewModels
 				NotifyOfPropertyChange(() => BetInfo);
 			}
 		}
+
+		//Na podstawie wartosci zwracanych z booli (radio buttony), wyswietla co wpisywac
 		public string Info
 		{
 
@@ -87,8 +93,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
-		//todo combobox albo radiobuttony
-
+		// Text Box na wprowadzanie wartosci liczbowych, badz tekstowych do poszczegolnych gier
 		public string InputBox
 		{
 			get { return _inputBox; }
@@ -101,6 +106,8 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// Ta wlasciwosc nie jest polaczona bezposrednio z widokiem. Sluzy tylko do posredniczenia w zamianie wartosci z powyzszego
+		// InputBoxa na liczby badz stringi
 		public int InputBoxToNumber
 		{
 			get
@@ -121,6 +128,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// Radio buttony, w zależności od ich wartośći możemy zagrać w daną grę
 		public bool OddButton
 		{
 			get { return _oddButton; }
@@ -200,6 +208,8 @@ namespace WPFUI.ViewModels
 				NotifyOfPropertyChange(() => CanPlay);
 			}
 		}
+
+		// Sprawdza, czy można zagrać, czyli naciśnąć przycisk zbindowany w widoku z nazwą "Play"
 		public bool CanPlay
 		{
 			get
@@ -251,6 +261,7 @@ namespace WPFUI.ViewModels
 			}
 		}
 
+		// Funkcja uruchamia się po naciśnięciu przycisku "Graj"
 		public void Play()
 		{
 			Console.WriteLine($"Play { BetStake }");

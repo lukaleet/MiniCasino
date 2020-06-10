@@ -10,18 +10,21 @@ namespace Casino.Roulette
         Random rand = new Random();
         public int RandomlyChosen = 0;
 
+        // Losuje liczbę, która wygrywa - zakres 0-37
         public void RandomNumber()
         {
             RandomlyChosen = 0;
             RandomlyChosen = rand.Next(37);
         }
 
+        // Oblicza wygraną na podstawie wyboru konkretnej liczby
         public decimal ComputeNumber(decimal betStake, int playerBet)
         {
             if (RandomlyChosen == playerBet) return betStake * 36;
             else return 0;
         }
 
+        // Oblicza wygraną na podstawie wyboru parzystości/nieparzystości liczby
         public decimal ComputeOdd(decimal betStake, string playerBet)
         {
             if (playerBet == "nieparzyste" && RandomlyChosen % 2 == 1) return betStake * 2;
@@ -29,6 +32,7 @@ namespace Casino.Roulette
             else return 0;
         }
 
+        // Oblicza wygraną na podstawie wyboru koloru liczby
         public decimal ComputeColor(decimal betStake, string playerBet)
         {
             int[] red = new int[] { 1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36 };
@@ -37,6 +41,7 @@ namespace Casino.Roulette
             else return 0;
         }
 
+        // Oblicza wygraną na podstawie połówki puli liczb
         public decimal ComputeHalf(decimal betStake, string playerBet)
         {
             if (playerBet == "1" && RandomlyChosen <= 18) return betStake * 2;
@@ -44,6 +49,7 @@ namespace Casino.Roulette
             else return 0;
         }
 
+        // Oblicza wygraną na podstawie 1/3 puli liczb
         public decimal ComputeThird(decimal betStake, string playerBet)
         {
             if (playerBet == "1" && RandomlyChosen <= 12) return betStake * 3;
@@ -52,6 +58,7 @@ namespace Casino.Roulette
             else return 0;
         }
 
+        // Oblicza wygraną na podstawie wyboru konkretnej kolumny
         public decimal ComputeColumn(decimal betStake, string playerBet)
         {
             if (playerBet == "1" && (RandomlyChosen % 3) == 1) return betStake * 3;

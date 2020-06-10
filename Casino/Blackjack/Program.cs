@@ -8,14 +8,13 @@ namespace Casino.BlackJack
 {
     public class BlackJackLogic
     {
-
         public List<string> deck = new List<string> { };
         public List<string> player = new List<string> { };
         public List<string> dealer = new List<string> { };
 
-
         public string winState;
 
+        // Stworzenie nowej talii
         public void addDeck(int how_many)
         {
             int x = 0;
@@ -30,7 +29,7 @@ namespace Casino.BlackJack
             }
         }
 
-
+        // Dociągnięcie karty przez dealra w zależnośći od wartośći jego ręki
         public void drawDealer()
         {
             Random rnd = new Random();
@@ -46,7 +45,7 @@ namespace Casino.BlackJack
             }
         }
 
-
+        // Obliczenie sumy kart w ręce
         public int deckSum(List<string> some_deck)
         {
             int a = 0;
@@ -64,6 +63,7 @@ namespace Casino.BlackJack
             return a;
         }
 
+        // Metoda do porównania ręki gracza i krupiera, co do wartości
         public void compare()
         {
             if (deckSum(player) > 21)
@@ -96,10 +96,10 @@ namespace Casino.BlackJack
                 winState = ("Remis!");
             }
         }
-
-
     }
 
+    // Metoda rozszerzona, która działa do każdej kolekcji typu <T>, np List<T>
+    // przetasowanie kart bazujące na przetasowaniu Fishera-Yatesa
     public static class Helpers
     {
 
